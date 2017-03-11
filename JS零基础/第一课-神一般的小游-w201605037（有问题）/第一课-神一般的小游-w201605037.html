@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第一课-神一般的小游-w201605037.html</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			pre {
+			    display: block;
+			    padding: 9.5px;
+			    margin: 0 0 10px;
+			    font-size: 13px;
+			    line-height: 1.42857143;
+			    color: #333;
+			    word-break: break-all;
+			    word-wrap: break-word;
+			    background-color: #f5f5f5;
+			    border: 1px solid #ccc;
+			    border-radius: 4px;			
+			}
+			.main {
+				width: 1200px;
+				margin: 0 auto;
+			}
+			.main .box{
+				width: 200px;
+				height: 200px;
+				margin: 20px auto;
+				border: 1px solid palevioletred;								
+			}
+			.box-demo1 {
+				cursor: pointer;
+			}
+			#demo4 {
+				height: 100%;
+			}
+			#demo4 div,
+			#demo5 div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid firebrick;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<p>案例01-点击添加替换a标签：div被点击时，生成一个a链接。</p>
+			<div class="box box-demo1" id="oclick_a">
+				<div>
+					点击此区域，替换a标签
+				</div>
+			</div>
+			<p>案例02-弹窗取值：弹出输入提示框，并将值放入h1,h2,h3三个标签。</p>
+			<div class="box">
+				<div class="box-demo2" id="demo2">
+					<a href="javascript:demo2_Prompt()">点击并输入h1/h2/h3内容</a>
+					<h1>null</h1>
+					<h2>null</h2>
+					<h3>null</h3>
+				</div>
+			</div>
+			<p>作业01-引入外部js文件，在当前html页面中输出 "Hello World~"：引入外部js文件，并在当前页面中用js讲外部数据输出到页面。</p>
+			<div class="box">
+				<div id="demo3">
+					
+				</div>
+			</div>
+			<p>作业02-两个DIV内容的各种改变：（1）两个div都会根据移入移出状态进行文字提示。（2）当某个div被点击后，该div的移入移出事件失效。</p>
+			<div class="box">
+				<div id="demo4">
+					<div class="" onclick="Mclick(0)" onmouseover="Mover(0)" onmouseout="Mout(0)">
+						
+					</div>
+					<div class="" onclick="Mclick(1)" onmouseover="Mover(1)" onmouseout="Mout(1)">
+						
+					</div>
+				</div>
+			</div>
+			<div class="">
+			<h1>问题</h1>
+			为什么点击demo5里面的两个div没法触发click事件，一定要在getElementsByTagName()后面加上[number]吗？<br />
+			<pre>
+				<div id="demo5">
+					<div class="">
+						
+					</div>
+					<div class="">
+						
+					</div>
+				</div>				
+			var demo5 = document.getElementById('demo5').getElementsByTagName('div');
+			demo5.onclick = function(){
+				Mclick.removeAttribute('onmouseover');
+				Mclick.removeAttribute('onmouseout');
+				Mclick.innerText = '已经删掉了hover事件';				
+			}					
+			</pre>
+			</div>
+		</div>
+		<script src="common.js"></script>
+		<script>
+			//点击DIV，替换生成一个a链接标签——S
+			var demo1 = document.getElementById('oclick_a');
+			demo1.onclick = function(){
+				this.innerHTML = '<a href="#">已经生成一个a链接</a>'
+			};
+			//点击DIV，替换生成一个a链接标签——E
+			
+			//prompt输入h1/h2/h3内容——S
+			var demo2= document.getElementById('demo2');
+			function demo2_Prompt(){
+				var dome2_promptText = prompt('请一次输入h1/h2/h3的内容');
+				demo2.getElementsByTagName("h1")[0].innerText = dome2_promptText;
+				demo2.getElementsByTagName('h2')[0].innerText = dome2_promptText;
+				demo2.getElementsByTagName('h3')[0].innerText = dome2_promptText;
+			}
+			//prompt输入h1/h2/h3内容——E
+			
+			//引入外部js文件，在当前html文件调用并输出——S
+			window.onload = demo2_Text;
+			//引入外部js文件，在当前html文件调用并输出——E
+			
+			var demo4 = document.getElementById('demo4').getElementsByTagName('div');
+			function Mover(e){
+				var MoverId = demo4[e];
+				MoverId.innerText = '鼠标已经移入';
+			}
+			function Mout(e){
+				var MoutId = demo4[e];
+				MoutId.innerText = '鼠标已经移出';
+			}
+			function Mclick(e){
+				var Mclick = demo4[e];
+				Mclick.removeAttribute('onmouseover');
+				Mclick.removeAttribute('onmouseout');
+				Mclick.innerText = '已经删掉了hover事件';
+			}
+		</script>
+	</body>
+</html>
