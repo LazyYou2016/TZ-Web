@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第二课-神一般的小游-w201605037</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.main {
+				width: 1200px;
+				margin: 0 auto;
+			}
+			.main .box {
+				width: 200px;
+				height: 30px;
+				line-height: 30px;
+				margin: 30px auto;
+				border-radius: 10px;
+				padding: 0 5px;
+				text-align: center;
+			}
+			.main #box1 {
+				background: #4cdaff;
+				color: #fff;
+			}
+			.main #box2 {
+				background: #ffe81c;
+				color: #000;
+			}			
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="box" id="box1">
+			</div>
+			<div class="box" id="box2">
+			</div>					
+		</div>
+		<script>
+			var Box1 = document.getElementById('box1');
+			var Box2 = document.getElementById('box2');
+			var Box1_Id = Box1.getAttribute('id');
+			var Box2_Id = Box2.getAttribute('id');
+			var MoverText = "鼠标移入了";
+			var MoutText = "鼠标离开了";
+			var MclickText = "鼠标点击了";
+			Box1.onmouseover = function(){
+				this.innerHTML = MoverText;
+				Box2.innerHTML = MoverText+'#'+Box2_Id;
+			}
+			Box1.onmouseout = function(){
+				this.innerHTML = MoutText;
+				Box2.innerHTML = MoutText+'#'+Box2_Id;
+			}
+			Box1.onclick = function(){
+				this.innerHTML = MclickText;
+				Box2.innerHTML = MclickText+'#'+Box2_Id;
+			}			
+			Box2.onmouseover = function(){
+				this.innerHTML = MoverText;
+				Box1.innerHTML = MoverText+'#'+Box1_Id;
+			}
+			Box2.onmouseout = function(){
+				this.innerHTML = MoutText;
+				Box1.innerHTML = MoutText+'#'+Box1_Id;
+			}
+			Box2.onclick = function(){
+				this.innerHTML = MclickText;
+				Box1.innerHTML = MclickText+'#'+Box1_Id;
+			}				
+		</script>
+	</body>
+</html>
