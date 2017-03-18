@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第03课 神一般的小游 w201605037</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul,li {
+				list-style: none;
+			}
+			body {
+				background: #f0f0f0;
+			}
+			.main {
+				width: 500px;
+				margin: 30px auto;
+			}
+			.chatroom-container .chatroom-head {
+				background: #e0e0e0;
+				border: 1px solid #d0d0d0;
+				border-radius: 4px;
+				height: 145px;
+				padding: 10px 10px 0;
+			}
+			.chatroom-container .chatroom-head textarea {
+				width: 475px;
+				height: 80px;
+				resize:none;
+				border-radius: 4px;
+				font-size: 20px;
+				padding: 2px;
+			}
+			.chatroom-container .tx {
+				width: 40px;
+				height: 40px;
+				background: #fff;
+				padding: 2px;
+				cursor: pointer;
+				float: left;
+			}
+			.chatroom-container .tx img {
+				width: 100%;
+			}
+			.btn {
+			    background: #f06000;
+			    border-radius: 2px;
+			    color: #fff;
+			    padding: 10px 20px;
+			    right: 0;
+			    float: right;
+			    margin-top: 5px;
+			    cursor: pointer;
+			}
+			.chatroom-list {
+				margin: 30px 0;
+			}
+			.chatroom-list li{
+				position: relative;
+				border-bottom: 1px solid #e0e0e0;
+				padding: 10px 10px 15px 65px;
+				min-height: 50px;
+			}
+			.chatroom-list .cl-tx {
+				position: absolute;
+				top: 10px;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main" id="box">
+			<div class="chatroom-container">
+				<div class="chatroom-head">
+					<textarea id="chat_text" placeholder="请输入内容"></textarea>
+					<div class="chatroom-foot">
+						<div class="tx" id="tx">
+							<img src="imgs/tx1.jpg"/>
+							<img src="imgs/tx2.png" style="display: none;"/>
+						</div>
+						<a class="btn" id="submit">发表</a>						
+					</div>
+				</div>
+			</div>
+			<ul class="chatroom-list" id="cr_list">
+				<li>
+					<div class="cl-tx">
+						<img src="imgs/tx1.jpg"/>
+					</div>
+					你在干什么呢？
+				</li>
+			</ul>
+		</div>
+		<script>
+			var Tx = document.querySelectorAll('#tx img');
+			var Img_src = Tx[1].src;
+			console.log(Tx)
+			Tx[0].onclick = function(){
+				this.style.display = 'none';
+				Tx[1].style.display = 'block';
+				Img_src = Tx[1].src;
+			};
+			Tx[1].onclick = function(){
+				this.style.display = 'none';
+				Tx[0].style.display = 'block';
+				Img_src = Tx[0].src;
+			};
+			var CR_Submit = document.getElementById('submit'),
+			Chat_Text = document.getElementById('chat_text'),
+			CR_list = document.getElementById('cr_list');
+			CR_Submit.onclick = function(){
+				if(Chat_Text.value==''){
+					alert('请输入聊天内容！')
+				}else{
+					CR_list.innerHTML += '<li><div class="cl-tx"><img src="'+Img_src+'"/></div>'+Chat_Text.value;
+					Chat_Text.value='';
+				}
+			}
+		</script>
+	</body>
+</html>
