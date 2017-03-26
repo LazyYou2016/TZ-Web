@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第04课 神一般的小游 w201605037</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li {
+				list-style: none;
+			}
+			.main {
+				width: 600px;
+				margin: 100px auto;
+				position: relative;
+			}
+			.main .navbtn-head {
+				position: absolute;
+				top: -40px;
+			}
+			.main .navbtn-head span{
+				display: inline-block;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				cursor: pointer;
+				background: #000;
+				color: #fff;
+			}
+			.main .navbtn-head span.active {
+				background: orange;
+			}
+			.main img {
+				display: block;
+				width: 100%;
+			}
+			.imghn,
+			.imgfn {
+				position: absolute;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				color: #fff;
+				text-align: center;
+				background: rgba(0, 0, 0, 0.4);
+			}
+			.imgfn {
+				bottom: 0;
+			}
+			.main ul li div{
+				display: none;
+			}
+			#navbtn-last,
+			#navbtn-next {
+				position: absolute;
+				top: 50%;
+				width: 70px;
+				height: 40px;
+				line-height: 40px;
+				margin-top: -20px;
+				color: #fff;
+				text-align: center;
+				cursor: pointer;
+				background: rgba(0, 0, 0, 0.4);
+				-webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    -o-user-select: none;
+			    user-select: none;
+			}
+			#navbtn-next {
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main" id="CarouselImg">
+			<div class="navbtn-head">
+				<span class="active">循环切换</span>
+				<span>单边切换</span>
+			</div>
+			<div id="navbtn-last">
+				上一张
+			</div>			
+			<div id="navbtn-next">
+				下一张
+			</div>
+			<div class="img-number">
+				<div class="imghn">
+					1/6
+				</div>
+				<div class="imgfn">
+					第<span>一</span>张图片
+				</div>				
+			</div>
+
+			<ul>
+				<li>
+					<div>
+						<img src="imgs/eva-01.jpg"/>
+					</div>
+				</li>
+				<li>
+					<div class="">
+						<img src="imgs/eva-02.jpg"/>
+					</div>
+				</li>
+				<li>
+					<div class="">
+						<img src="imgs/eva-03.jpg"/>
+					</div>
+				</li>
+				<li>
+					<div class="">
+						<img src="imgs/eva-04.jpg"/>
+					</div>
+				</li>
+				<li>
+					<div class="">
+						<img src="imgs/eva-05.jpg"/>
+					</div>
+				</li>
+				<li>
+					<div class="">
+						<img src="imgs/eva-06.jpg"/>
+					</div>
+				</li>				
+			</ul>
+		</div>
+		<script>
+			//获取img总个数
+			var imgLength = document.querySelectorAll('#CarouselImg ul li').length;
+			//图片位置
+			var imgId = document.querySelectorAll('#CarouselImg ul li div');
+			//图片上下边提示文字“当前第几张图片”
+			var T_Text = document.querySelectorAll('#CarouselImg .img-number div');
+			//轮播模式选择
+			var NavSelect = document.querySelectorAll('#CarouselImg .navbtn-head span');
+			//上一个按钮
+			var Lbtn = document.getElementById('navbtn-last');
+			//下个按钮
+			var Nbtn = document.getElementById('navbtn-next');
+			//设置第*张图片
+			var T_TextvChinese = ['一','二','三','四','五','六'];
+			//图片位置默认为0
+			var imgIndex = 0;
+			//设置指定图片显示 S
+			imgId[imgIndex].style.display = 'block';
+			T_Text[0].innerHTML = imgIndex+1+'/'+imgLength;
+			T_Text[1].getElementsByTagName('span')[0].innerText = T_TextvChinese[imgIndex];
+			//设置指定图片显示 E
+			var NavSelectBoolean = true;
+			NavSelect[0].onclick = function(){
+				this.setAttribute('class','active');
+				NavSelect[1].removeAttribute('class');
+				//设置轮播模式是循环
+				NavSelectBoolean = true;
+			}
+			NavSelect[1].onclick = function(){
+				this.setAttribute('class','active');
+				NavSelect[0].removeAttribute('class');
+				//设置轮播模式是单边
+				NavSelectBoolean = false;
+			}
+			Lbtn.afei = true;
+			Lbtn.onclick = imgToggle;
+			Nbtn.afei = false;
+			Nbtn.onclick = imgToggle;
+			function imgToggle(){
+			if(this.afei){
+					imgId[imgIndex].style.display = 'none';
+					imgIndex--;
+					if (NavSelectBoolean==true) {
+						if(imgIndex==-1)imgIndex=imgIndex=imgLength-1;
+					}else{
+						if(imgIndex==-1){
+							imgIndex=0;
+							alert("这是第一张，不能点击上一张！");
+						}					
+					}
+					imgId[imgIndex].style.display = 'block';
+					T_Text[0].innerHTML = imgIndex+1+'/'+imgLength;
+					T_Text[1].getElementsByTagName('span')[0].innerText = T_TextvChinese[imgIndex];
+			}else{
+				imgId[imgIndex].style.display = 'none';
+				imgIndex++;
+				if (NavSelectBoolean==true) {
+					if(imgIndex==imgLength)imgIndex=0;
+				}else{
+					if(imgIndex==imgLength){
+						imgIndex=imgIndex=imgLength-1;
+						alert("这是最后一张，不能点击下一张！");
+					}					
+				}
+				imgId[imgIndex].style.display = 'block';
+				T_Text[0].innerHTML = imgIndex+1+'/'+imgLength;
+				T_Text[1].getElementsByTagName('span')[0].innerText = T_TextvChinese[imgIndex];
+				}
+			}
+		</script>
+	</body>
+</html>

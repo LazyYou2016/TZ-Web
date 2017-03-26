@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第06课 神一般的小游 w201605037</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li {
+				list-style: none;
+			}
+			.main {
+				width: 150px;
+				margin: 50px auto;
+			}
+			.main li {
+				background: #C0C0C0;
+				height: 32px;
+				line-height: 32px;
+				text-indent: 20px;
+				cursor: pointer;
+			}
+			.main .list{
+				/*height: 32px;*/
+				line-height: 32px;
+				cursor: pointer;
+			}
+			.main .list div {
+				background: #000;
+				color: #fff;
+				text-indent: 10px;
+			}
+			.main .list div.open {
+				background: orange;
+			}
+			.main ul {
+				display: none;
+			}
+			.main ul.block {
+				display: block;
+			}
+			.main li.active {
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="list">
+				<div class="open">
+					同事
+				</div>
+				<ul class="block">
+					<li class="active">千寻</li>
+					<li>非攻</li>
+					<li>夏雨</li>
+				</ul>				
+			</div>
+			<div class="list">
+				<div>
+					新加好友
+				</div>
+				<ul>
+					<li>新加好友</li>
+					<li>萌萌哒</li>
+					<li>周老头</li>
+				</ul>				
+			</div>
+			<div class="list">
+				<div>
+					讲师
+				</div>
+				<ul>
+					<li>讲师</li>
+					<li>最近</li>
+					<li>微笑在我心</li>
+					<li>努力奋斗</li>
+					<li>樱庭初雪</li>
+				</ul>				
+			</div>
+		</div>
+		<script>
+			var oDiv = document.querySelectorAll(".main .list div");
+			var oUl = document.querySelectorAll(".main .list ul");
+			var oDiv_Length = oDiv.length;
+			var oUl_Li = document.querySelectorAll(".main ul li");
+			var oUl_Li_Length = oUl_Li.length;
+			var Index = 0;
+			for (var i=0;i<oDiv_Length;i++) {
+				oDiv[i].num = i;
+				oDiv[i].onclick = function (){
+					oDiv_Index = this.num;
+					if (this.className=="open") {
+						this.className = "";
+						oUl[oDiv_Index].className = "";
+					} else{
+						this.className = "open";
+						oUl[oDiv_Index].className = "block";
+					}
+				}
+			}
+			for (var j=0;j<oUl_Li_Length;j++) {
+				oUl_Li[j].Lnum = j;
+				oUl_Li[j].onclick = function (){
+					oUl_Li[Index].className = "";
+					this.className = "active";
+					Index = this.Lnum;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第06课 神一般的小游 w201605037</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li {
+				list-style: none;
+			}
+			.nav-left {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 45px;
+				height: 100%;
+				background: gray;
+				display: none;
+			}
+			#navbtn {
+				position: fixed;
+				top: 80%;
+				left: 0;
+				width: 45px;
+				height: 45px;
+				background-image: url(imgs/icon.png);
+				background-position: -5px 48px;
+				cursor: pointer;
+			}
+			#navbtn.open {
+				background-position: -5px -2px;
+			}
+			.nav-iconmain{
+				padding-top: 50%;
+				transform: translateY(50%);				
+			}
+			.nav-icon li{
+				position: relative;
+				width: 100%;
+				margin-bottom: 30px;
+				padding: 5px 0;
+				cursor: pointer;
+			}
+			.nav-icon li img{
+				display: block;
+    			margin: 0 auto;				
+			}
+			.nav-icon li.active {
+				background: #f0f0c0;
+			}
+			.nav-content {
+				display: none;
+				width: 200px;
+				height: 200px;
+				background: #f0f0c0;
+				border: 1px solid gray;
+				position: absolute;
+			    top: -1px;
+			    left: 45px;
+			    border-left: none;
+			}
+			.nav-icon li.active .nav-content {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav-left" id="navmain">
+			<div class="nav-iconmain">
+				<ul class="nav-icon">
+					<li>
+						<img src="imgs/bq1.png"/>
+						<div class="nav-content"></div>
+					</li>
+					<li>
+						<img src="imgs/bq2.png"/>
+						<div class="nav-content"></div>
+					</li>
+					<li>
+						<img src="imgs/bq3.png"/>
+						<div class="nav-content"></div>
+					</li>
+					<li>
+						<img src="imgs/bq4.png"/>
+						<div class="nav-content"></div>
+					</li>
+					<li>
+						<img src="imgs/bq5.png"/>
+						<div class="nav-content"></div>
+					</li>					
+				</ul>
+			</div>
+		</div>
+		<div id="navbtn"></div>
+		<script>
+			var navBtn = document.getElementById("navbtn");
+			var navM = document.getElementById("navmain");
+			var oLi = document.querySelectorAll(".nav-icon li");
+			var oLi_length = oLi.length;
+			var Index = 0;
+			navbtn.onclick = function (){
+				if(this.className){
+					this.className = "";
+					navM.style.display = "none";
+					for (var i=0;i<oLi_length;i++) {
+						oLi[i].className = "";
+					}
+				}else{
+					this.className = "open";
+					navM.style.display = "block";
+				}
+			}
+			for (var i=0;i<oLi_length;i++) {
+				oLi[i].num = i;
+				oLi[i].onclick = function(){
+					if(this.className){
+						this.className = "";
+					}else{
+						oLi[Index].className = "";
+						this.className = "active";
+						Index = this.num;							
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

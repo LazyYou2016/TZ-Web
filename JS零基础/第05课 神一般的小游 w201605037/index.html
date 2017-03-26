@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第05课 神一般的小游 w201605037</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li {
+				list-style: none;
+			}
+			.box {
+				padding: 5px 0;
+				border-bottom: 1px solid #000;
+			}
+			.box div {
+				display: inline-block;
+				text-align: center;
+				width: 100px;
+				border: 1px solid #0080C0;
+				margin: 3px;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="box">
+	</div>
+	<div class="box">
+	</div>	
+	<div class="box">
+	</div>	
+	<div class="box">
+	</div>
+		<script>
+			var Box = document.getElementsByClassName("box");
+			for (var i=1;i<=9;i++) {
+				for (var j=1;j<=i;j++) {
+					Box[0].innerHTML+="<div>"+i+"*"+j+"="+i*j+"</div>";
+				}
+				Box[0].innerHTML+="<br/>";
+			}
+			for (var i=1;i<=9;i++) {
+				for (var j=i;j<=9;j++) {
+					Box[1].innerHTML+="<div>"+i+"*"+j+"="+i*j+"</div>";
+				}
+				Box[1].innerHTML+="<br/>";
+			}
+			for (var i=9;i>=1;i--) {
+				for (var j=1;j<=i;j++) {
+					Box[2].innerHTML+="<div>"+i+"*"+j+"="+i*j+"</div>";
+				}
+				Box[2].innerHTML+="<br/>";
+			}
+			for (var i=9;i>=1;i--) {
+				for (var j=i;j<=9;j++) {
+					Box[3].innerHTML+="<div>"+i+"*"+j+"="+i*j+"</div>";
+				}
+				Box[3].innerHTML+="<br/>";
+			}
+		</script>
+	</body>
+</html>
