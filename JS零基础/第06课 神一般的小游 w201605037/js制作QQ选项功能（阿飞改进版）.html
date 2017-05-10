@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            width: 200px;
+            border: 1px solid #bbb;
+            margin-left: 50px;
+        }
+        #box ul{
+            overflow: hidden;
+            height: 35px;
+            border: 1px solid #bbb;
+        }
+        #box ul.goudan{
+            height: auto;
+        }
+        #box ul li{
+            font-size:12px;
+            line-height: 20px;
+            text-indent: 15px;
+            background: #ffd4dc;
+            border-bottom: 1px dashed #bbb;
+            cursor: pointer;
+        }
+        #box ul li.active.title{
+            background: #000;
+        }
+        #box ul li.click{
+            background: #ef69ff;
+        }
+        #box ul li.title{
+            line-height: 35px;
+            height: 35px;
+            text-indent: 10px;
+            font-size: 16px;
+            background: #b500ff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li class="title">同事</li>
+            <li class="afei">千寻</li>
+            <li class="afei">千凡</li>
+            <li class="afei">阿飞</li>
+            <li class="afei">追梦</li>
+        </ul>
+        <ul>
+            <li class="title">好友</li>
+            <li class="afei">梅梅</li>
+            <li class="afei">甜甜</li>
+            <li class="afei">波波</li>
+        </ul>
+        <ul>
+            <li class="title">Vip学员</li>
+            <li class="afei">逐梦</li>
+            <li class="afei">执情</li>
+            <li class="afei">0度</li>
+        </ul>
+    </div>
+    <script>
+        var aTitle = document.querySelectorAll("#box .title");
+        var aUl = document.querySelectorAll("#box ul");
+        var aLi = document.querySelectorAll("#box ul li.afei");
+        var length = aTitle.length;
+        var index = 0;//用来表示当前第几个li被点击了
+        for (var i = 0; i < length; i++) {
+            aTitle[i].index = i;//给.title添加自定义属性，以便于对应的去操作ul
+            //aTitle[i].ifClick = false;//给.title添加自定义属性，用来判断对应的ul是否展开
+            aTitle[i].onclick = function () {
+                //让对应序号的ul添加名字
+                //var obj = aUl[this.index];
+                //obj.className = obj.className?"":"goudan";
+                if ( this.ifClick ){
+                    aUl[this.index].className = "";
+                    this.className = 'title';
+                    aTitle[this.index].ifClick = false;
+                }else{
+                    aUl[this.index].className = "goudan";
+                    this.className += ' active';
+                    aTitle[this.index].ifClick = true;
+                }
+            };
+        }
+
+        for (i = 0; i < aLi.length; i++) {
+            aLi[i].dachui = i;
+            aLi[i].onclick = function () {
+                aLi[index].className = "afei";
+                index = this.dachui;
+                this.className += " click";
+            };
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+

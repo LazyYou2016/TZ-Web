@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        #box .resize div{
+            position: absolute;
+            width: 5px;
+            height: 5px;
+        }
+        #box .resize div.se{
+            right: 0;
+            bottom: 0;
+            background: green;
+            cursor: se-resize;
+        }
+        #box .resize div.sw{
+            left: 0;
+            bottom: 0;
+            background: green;
+            cursor: sw-resize;
+        }
+        #box .resize div.nw{
+            left: 0;
+            top: 0;
+            background: green;
+            cursor: nw-resize;
+        }
+        #box .resize div.ne{
+            right: 0;
+            top: 0;
+            background: #00dc00;
+            cursor: ne-resize;
+        }
+        #box .resize div.e{
+            top: 0;
+            right: 0;
+            height: 100%;
+            background: #ff7d2d;
+            cursor: e-resize;
+        }
+        #box .resize div.s{
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            cursor: s-resize;
+        }
+        #box .resize div.w{
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #ff7d2d;
+            cursor: w-resize;
+        }
+        #box .resize div.n{
+            left: 0;
+            top: 0;
+            width: 100%;
+            background: #000;
+            cursor: n-resize;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+        <div class="resize">
+            <div class="e"></div>
+            <div class="s"></div>
+            <div class="w"></div>
+            <div class="n"></div>
+            <div class="se"></div>
+            <div class="sw"></div>
+            <div class="nw"></div>
+            <div class="ne"></div>
+        </div>
+    </div>
+    <script>
+        var oBox = document.getElementById("box"),
+            oReisze = oBox.querySelectorAll(".resize div"),
+            length = oReisze.length;
+        // 东 南 西 北 东南 西南 西北 东北
+        for (var i = 0; i < length; i++) {
+            (function (i) {
+                oReisze[i].onmousedown = function (e) {
+                    e = e||window.event;
+                    var dX = e.clientX,
+                        dY = e.clientY,
+                        dWidth = oBox.clientWidth,
+                        dHeight = oBox.clientHeight,
+                        dLeft = oBox.offsetLeft,
+                        dTop = oBox.offsetTop,
+                        width = dWidth,
+                        height = dHeight,
+                        left = dLeft,
+                        top = dTop;
+                    document.onmousemove = function (e) {
+                        e = e||window.event;
+                        var mX = e.clientX,
+                            mY = e.clientY,
+                            x_ = mX - dX,
+                            y_ = mY - dY;
+                        switch (i){
+                            case 0://东
+                                width = dWidth + x_;
+                                break;
+                            case 1://南
+                                height = dHeight + (mY - dY);
+                                break;
+                            case 2://西
+                                width = dWidth - x_;
+                                left = dLeft + x_;
+                                break;
+                            case 3://北
+                                height = dHeight - y_;
+                                top = dTop + y_;
+                                break;
+                            case 4://东南
+                                width = dWidth + x_;
+                                height = dHeight + y_;
+                                break;
+                            case 5://西南
+                                width = dWidth - x_;
+                                left = dLeft + x_;
+                                height = dHeight + y_;
+                                break;
+                            case 6://西北
+                                width = dWidth - x_;
+                                left = dLeft + x_;
+                                height = dHeight - y_;
+                                top = dTop + y_;
+                                break;
+                            case 7://东北
+                                width = dWidth + x_;
+                                height = dHeight - y_;
+                                top = dTop + y_;
+                                break;
+                        }
+
+                        width = Math.max(width , 10);
+                        height = Math.max(height , 10);
+                        left = Math.min( left , dLeft + dWidth - 10 );
+                        top = Math.min( top , dTop + dHeight - 10 );
+                        oBox.style.width = width + 'px';
+                        oBox.style.height = height + 'px';
+                        oBox.style.left = left + 'px';
+                        oBox.style.top = top + 'px';
+                    };
+                    document.onmouseup = function () {
+                        this.onmousemove = null;
+                        this.onmouseup = null;
+                    };
+                    return false;
+                };
+            })(i);
+        }
+
+
+//        var oBox = document.getElementById("box"),
+//            oSe = oBox.querySelector(".se");
+//        oSe.onmousedown = function (e) {
+//            e = e||window.event;
+//            var dX = e.clientX,
+//                dY =e.clientY,
+//                dWidth = oBox.clientWidth,
+//                dHeight = oBox.clientHeight;
+//            document.onmousemove = function (e) {
+//                e = e||window.event;
+//                var mX = e.clientX,
+//                    mY = e.clientY;
+//                oBox.style.width = dWidth + mX - dX + 'px';
+//                oBox.style.height = dHeight + mY - dY + 'px';
+//            };
+//            document.onmouseup = function () {
+//                this.onmousemove = null;
+//                this.onmouseup = null;
+//            };
+//            return false;
+//        };
+    </script>
+</body>
+</html>

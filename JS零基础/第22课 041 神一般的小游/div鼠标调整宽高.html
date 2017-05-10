@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第22课 041 神一般的小游</title>
+		<style>
+	        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+	        li{ list-style:none;}
+	        .box {
+	        	position: absolute;
+	        	top: 0;
+	        	left: 0;
+	        	width: 100px;
+	        	height: 100px;
+	        	background: #DB7093;
+	        }
+	        .box .drag {
+	        	position: absolute;
+	        }
+	        .box .right{
+	        	top: 0;
+	        	right: 0;
+	        	width: 10px;
+	        	height: 100%;
+	        	cursor: e-resize;
+	        }
+	        .box .bottom{
+	        	bottom: 0;
+	        	width: 100%;
+	        	height: 10px;
+	        	cursor: s-resize;
+	        }	        
+	        .box .lb{
+	        	right: 0;
+	        	bottom: 0;
+	        	width: 20px;
+	        	height: 20px;
+	        	cursor: se-resize;
+	        	z-index: 9999;
+	        }		        
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="drag right">
+				
+			</div>
+			<div class="drag bottom">
+				
+			</div>
+			<div class="drag lb">
+				
+			</div>
+		</div>
+		<script>
+			var oBox = document.querySelector(".box"),
+				oBoxright = oBox.querySelector(".right"),
+				oBoxbottom = oBox.querySelector(".bottom"),
+				oBoxlb = oBox.querySelector(".lb");
+			oBoxright.onmousedown = function(e){
+				var xDown = e.clientX;
+				var widthDown = this.offsetWidth;
+				e = e || window.event;
+				document.onmousemove = function(e){
+					e = e || window.event;
+					var xMove = e.clientX;
+					oBox.style.width = widthDown + xMove + "px";
+				}
+				mouseUp();
+			}			
+			oBoxbottom.onmousedown = function(e){
+				var yDown = e.clientY;
+				var heightDown = this.offsetHeight;
+				e = e || window.event;
+				document.onmousemove = function(e){
+					e = e || window.event;
+					var yMove = e.clientY;
+					oBox.style.height = heightDown + yMove + "px";
+				}
+				mouseUp();
+			}
+			oBoxlb.onmousedown = function(e){
+				var xDown = e.clientX;
+				var yDown = e.clientY;
+				var widthDown = this.offsetWidth;
+				var heightDown = this.offsetHeight;
+				e = e || window.event;
+				document.onmousemove = function(e){
+					e = e || window.event;
+					var xMove = e.clientX;
+					var yMove = e.clientY;
+					oBox.style.width = widthDown + xMove + "px";
+					oBox.style.height = heightDown + yMove + "px";
+				}
+				mouseUp();
+			}
+			function mouseUp(){
+				document.onmouseup = function(){
+					this.onmousemove =null;
+					this.onmouseup =null;
+				}				
+			}
+		</script>
+	</body>
+</html>

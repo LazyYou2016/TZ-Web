@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第09课 041 神一般的小游</title>
+		<style>
+			.box {
+				border-bottom: 1px solid red;
+				padding: 10px;
+			}
+			.box input {
+				color: #333;
+				font-family: "微软雅黑";
+				font-size: 24px;
+			}
+			.box input[disabled] {
+				background: transparent;
+				border: 2px solid transparent;
+				padding: 1px 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input type="text" value="我是要修改的文字" placeholder="请输入修改内容" disabled/>
+			<button>修改</button>
+		</div>
+		<div class="box">
+			<input type="text" value="我是要修改的文字" placeholder="请输入修改内容" disabled/>
+			<button>修改</button>
+		</div>
+		<div class="box">
+			<input type="text" value="我是要修改的文字" placeholder="请输入修改内容" disabled/>
+			<button>修改</button>
+		</div>
+		<div class="box">
+			<input type="text" value="我是要修改的文字" placeholder="请输入修改内容" disabled/>
+			<button>修改</button>
+		</div>		
+		<script>
+			var oBtn = document.querySelectorAll(".box button");
+			var oText = document.querySelectorAll(".box input");
+			var length = oBtn.length;
+			for (var i=0;i<length;i++) {
+				oBtn[i].goudan = i;
+				oBtn[i].bool = true;
+				oBtn[i].onclick = function (){
+					var index = this.goudan;
+					if(this.bool){
+//						if(oText[index].value>1){
+//							oText[index].value="";
+//						}
+						this.innerHTML = "确认";
+						oText[index].setAttribute("value","");
+						oText[index].removeAttribute("disabled");
+						this.bool = false;
+					}else{
+						this.innerHTML = "修改";
+						oText[index].setAttribute("disabled","disabled");
+						this.bool = true;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

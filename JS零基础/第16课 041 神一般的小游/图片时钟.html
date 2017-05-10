@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>第16课 041 神一般的小游</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box {
+        	width: 280px;
+        	height: 60px;
+        	margin: 50px auto;
+        }
+        .time {
+        	width: 40px;
+        	height: 100%;
+        	float: left;
+        	background-repeat: no-repeat;
+        	background-position: center;
+        }
+        .time.d {
+        	width: 20px;
+        }
+    </style>
+</head>
+<body>
+	<div id="box">
+		<img class="time"/>
+		<img class="time"/>
+		<img class="time d"/>
+		<img class="time"/>
+		<img class="time"/>
+		<img class="time d"/>
+		<img class="time"/>
+		<img class="time"/>
+	</div>
+    <script>
+    	function time(){
+	    	var Box = document.getElementById("box");
+	    	var Img = document.querySelectorAll("#box img")
+	    	var time = new Date();
+	    	var hh = time.getHours();
+	    	var mm = time.getMinutes();
+	    	var ss = time.getSeconds();
+	    	var timeText = ""+toTwo(hh)+"d"+toTwo(mm)+"d"+toTwo(ss);
+	    	var str ="";
+	    	for (var i=0;i<timeText.length;i++) {
+				Img[i].setAttribute("src",'images/'+timeText.charAt(i)+'.png')
+	    	}
+	    	return time;    		
+	    	console.log(Img[i])
+    	}
+        function toTwo(num) {
+        	return num*1<10?"0"+num:num;
+        }
+    	time();
+    	setInterval(time,1000);    
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

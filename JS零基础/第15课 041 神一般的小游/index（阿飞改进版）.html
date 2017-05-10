@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>第09课 041 神一般的小游</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        .main {
+        	width: 320px;
+        	margin: 0 auto;
+        }
+        .box{
+        	position: relative;
+        	width: 220px;
+        	height: 340px;
+        	/*margin: 50px auto;*/
+        	display: inline-block;
+        }
+        .box .up,
+        .box .down {
+        	/*position: absolute;*/
+        	/*left: 0;*/
+        	width: 100%;
+        	height: 30px;
+        	line-height: 30px;
+        	background: #333;
+        	color: #fff;
+        	text-align: center;
+        	cursor: pointer;
+        }
+        .box .list-img {
+        	position: relative;
+		    height: 280px;
+		    overflow: hidden;        	
+        }
+        .box .list-img img {
+        	width: 100%;
+        	position: absolute;
+        	top:0;
+        }
+    </style>
+</head>
+<body>
+	<div class="main">
+	    <div class="box">
+	    	<div class="up">
+	    		向上
+	    	</div>
+	    	<div class="list-img">
+	    		<img src="imgs/timg.jpg"/>
+	    	</div>
+	    	<div class="down">
+	    		向下
+	    	</div>
+	    </div>
+	</div>
+    <script>
+    	var btnUp = document.querySelectorAll(".box .up"),
+    		btnDown = document.querySelectorAll(".box .down"),
+    		ListBox = document.querySelectorAll(".box .list-img img"),
+    		Rnav = document.querySelectorAll(".box1 .img-b"),
+    		Top = 0,
+    		timer = null,
+    		min = -(795-280);
+    	btnUp[0].onmousedown = function(){
+    		timer = setInterval(function(){
+				Top--;
+				Top = Math.max(Top,min)
+				ListBox[0].style.top = Top+"px";    			
+    		},13);
+    	}
+    	btnDown[0].onmousedown = function(){
+    		timer = setInterval(function(){
+				Top++;
+				Top = Math.min(Top,0)
+				ListBox[0].style.top = Top+"px";    			
+    		},13)
+    	}
+    	document.onmouseup = function(){
+    		clearInterval(timer);
+    	}
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

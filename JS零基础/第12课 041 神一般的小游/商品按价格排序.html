@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        .red {
+        	color: red;
+        }
+        .box {
+        	width: 1000px;
+        	margin: 30px auto;
+        }
+        .shopname-select {
+        	padding: 0 30px;
+        	width: 100%;
+        	height: 40px;
+        	line-height: 40px;
+        	background: #f8f8f8;
+        	border: 1px solid #dddddd;
+        }
+        .shopname-select li {
+        	float: left;
+        	padding: 0 10px;
+        	margin: 0 10px;
+        }
+        .shopname-select #price{
+        	position: relative;
+        	cursor: pointer;
+        	background: #fff;
+        	z-index: 1;
+        }
+        .jiage {
+		    width: 100px;
+		    background: #fff;
+		    border: 1px solid #dddddd;
+		    border-top: none;
+		    padding: 5px 10px;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    display: none;
+        }
+		.list-shop ul li {
+		    position: relative;
+		    float: left;
+		    width: 200px;
+		    height: 230px;
+		    padding: 10px;
+		    margin: 10px 14px;
+		    border: 1px solid #ddd;
+		}
+		.list-shop ul li img {
+			width: 200px;
+			height: 200px;
+		}
+		.list-shop ul li p {
+			font-size: 14px;
+		}
+		.small-jiage {
+			background: url(images/price.png) no-repeat;
+		    width: 50px;
+		    height: 50px;
+		    line-height: 50px;
+		    position: absolute;
+		    right: 0;
+		    bottom: 0;
+		    color: #ffe218;
+		    font-weight: bold;
+		}
+    </style>
+</head>
+<body>
+	<div class="box">
+		<div class="shopname-select">
+			<ul>
+				<li>流行</li>
+				<li>热销</li>
+				<li>上新</li>
+				<li id="price">
+					<span>价格</span>
+					<div class="jiage">
+						<span>价格从高到低</span>
+						<span>价格从低到高</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="list-shop">
+			<ul>
+				<li>
+					<img src="images/xh_img1.jpg"/>
+					<p>粉色浪漫系列玫瑰</p>
+					<div class="small-jiage">
+						￥<span>500</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img2.jpg"/>
+					<p>深红色经典玫瑰</p>
+					<div class="small-jiage">
+						￥<span>100</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img3.jpg"/>
+					<p>清淡优雅百年百合</p>
+					<div class="small-jiage">
+						￥<span>300</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img4.jpg"/>
+					<p>紫色冷艳系列</p>
+					<div class="small-jiage">
+						￥<span>700</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img5.jpg"/>
+					<p>经典红色我的最爱</p>
+					<div class="small-jiage">
+						￥<span>130</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img6.jpg"/>
+					<p>甜美七分袖荷叶边条纹设</p>
+					<div class="small-jiage">
+						￥<span>210</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img7.jpg"/>
+					<p>甜美七分袖荷叶边条纹设</p>
+					<div class="small-jiage">
+						￥<span>90</span>
+					</div>
+				</li>
+				<li>
+					<img src="images/xh_img8.jpg"/>
+					<p>甜美七分袖荷叶边条纹设</p>
+					<div class="small-jiage">
+						￥<span>99.5</span>
+					</div>
+				</li>				
+			</ul>
+		</div>
+	</div>
+    <script>
+        (function () {
+            var oPrice = document.getElementById("price"),
+                oSpan = oPrice.getElementsByTagName("span")[0],
+                oHide = oPrice.querySelector(".jiage"),
+                aHideA = oHide.getElementsByTagName("span"),
+                aContent = document.querySelector(".box .list-shop ul"),
+                aContentLi = aContent.getElementsByTagName("li"),
+                arrLi = [],
+                length = aContentLi.length;
+            for (i = 0; i < aContentLi.length; i++) {
+                arrLi[i] = [];
+                arrLi[i][0] = aContentLi[i].querySelector("img").src;
+                arrLi[i][1] = aContentLi[i].querySelector("p").innerHTML;
+                arrLi[i][2] = Number(aContentLi[i].querySelector("div span").innerHTML);
+            }
+            oPrice.onmouseenter = function () {
+                oHide.style.display = "block";
+            };
+            //移出li，隐藏hide
+            oPrice.onmouseleave = function () {
+                oHide.style.display = "none";
+            };
+            for (var i = 0; i < 2; i++) {
+                aHideA[i].x = i;
+                aHideA[i].onclick = function () {
+                    oHide.style.display = "none";
+                    oSpan.innerHTML = this.innerHTML;
+                    oSpan.className = 'red';
+                    paixu(this.x);
+                };
+            } 
+            function paixu(index) {
+                arrLi.sort(function (a,b) {
+                    return index?a[2]-b[2]:b[2]-a[2];
+                });
+                aContent.innerHTML = "";
+                for (var i = 0; i < length; i++) {
+                    aContent.innerHTML += "<li><img src='"+
+                    arrLi[i][0]+
+                    "' /><p>"+
+                    arrLi[i][1]+
+                    "</p><div class='small-jiage'>￥<span>"+
+                    arrLi[i][2]+
+                    "</span></div></li>";
+                }
+            }            
+        })();
+
+    </script>
+</body>
+</html>

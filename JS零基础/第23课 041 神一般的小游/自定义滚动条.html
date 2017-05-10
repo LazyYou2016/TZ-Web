@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第22课 041 神一般的小游</title>
+		<style>
+	        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+	        li{ list-style:none;}
+	        .box {
+	        	position: relative;
+	        	width: 600px;
+	        	height: 500px;
+	        	margin: 40px auto;
+	        	background: #e8e1aa;
+	        	overflow: hidden;
+	        	padding-right: 20px;
+	        }
+	        .box #content{
+	        	position: absolute;
+	        	top: 0;
+	        	left: 0;
+	        	padding-right: 20px;
+	        }
+	        #box-srcoll {
+	        	width: 20px;
+	        	height: 100%;
+	        	position: absolute;
+	        	top: 0;
+	        	right: 0;
+				background: -webkit-linear-gradient(top,#e065e2,#83d3e2);
+				background: -moz-linear-gradient(top,#e065e2,#83d3e2);
+				background: -ms-linear-gradient(top,#e065e2,#83d3e2);
+				background: -o-linear-gradient(top,#e065e2,#83d3e2);
+				background: linear-gradient(to top,#e065e2,#83d3e2);
+	        }
+	        #box-srcoll span {
+	        	display: block;
+	        	width: 100%;
+	        	/*height: 50px;*/
+	        	background: #333;
+	        	border-radius: 10px;
+	        	cursor: pointer;
+	        	position: absolute;
+	        }
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="content">
+				太祖武皇帝，沛国谯人也，姓曹，讳操，字孟德，汉相国参之后。桓帝世，曹腾为中常侍大长秋，封费亭侯。养子嵩嗣，官至太尉，莫能审其生出本末。嵩生太祖。
+
+太祖少机警，有权数，而任侠放荡，不治行业，故世人未之奇也；惟梁国桥玄、南阳何颙异焉。玄谓太祖曰：“天下将乱，非命世之才不能济也，能安之者，其在君乎！”年二十，举孝廉为郎，除洛阳北部尉，迁顿丘令，征拜议郎。
+
+光和末，黄巾起。拜骑都尉，讨颍川贼。迁为济南相，国有十余县，长吏多阿附贵戚，赃污狼藉，于是奏免其八；禁断淫祀，奸宄逃窜，郡界肃然。久之，征还为东郡太守；不就，称疾归乡里。
+
+顷之，冀州刺史王芬、南阳许攸、沛国周旌等连结豪杰，谋废灵帝，立合肥侯，以告太祖，太祖拒之。芬等遂败。
+
+金城边章、韩遂杀刺史郡守以叛，觽十余万，天下骚动。征太祖为典军校尉。会灵帝崩，太子即位，太后临朝。大将军何进与袁绍谋诛宦官，太后不听。进乃召董卓，欲以胁太后，卓未至而进见杀。卓到，废帝为弘农王而立献帝，京都大乱。卓表太祖为骁骑校尉，欲与计事。太祖乃变易姓名，间行东归。出关，过中牟，为亭长所疑，执诣县，邑中或窃识之，为请得解。卓遂杀太后及弘农王。太祖至陈留，散家财，合义兵，将以诛卓。冬十二月，始起兵于己吾，是岁中平六年也。
+
+初平元年春正月，后将军袁术、冀州牧韩馥、豫州刺史孔□、兖州刺史刘岱、河内太守王匡、勃海太守袁绍、陈留太守张邈、东郡太守桥瑁、山阳太守袁遗、济北相鲍信同时俱起兵，觽各数万，推绍为盟主。太祖行奋武将军。
+
+二月，卓闻兵起，乃徙天子都长安。卓留屯洛阳，遂焚宫室。是时绍屯河内，邈、岱、瑁、遗屯酸枣，术屯南阳，□屯颍川，馥在邺。卓兵强，绍等莫敢先进。太祖曰：“举义兵以诛暴乱，大觽已合，诸君何疑？向使董卓闻山东兵起，倚王室之重，据二周之险，东向以临天下；虽以无道行之，犹足为患。今焚烧宫室，劫迁天子，海内震动，不知所归，此天亡之时也。一战而天下定矣，不可失也。”遂引兵西，将据成皋。邈遣将韂兹分兵随太祖。到荥阳汴水，遇卓将徐荣，与战不利，士卒死伤甚多。太祖为流矢所中，所乘马被创，从弟洪以马与太祖，得夜遁去。荣见太祖所将兵少，力战尽日，谓酸枣未易攻也，亦引兵还。
+
+太祖到酸枣，诸军兵十余万，日置酒高会，不图进取。太祖责让之，因为谋曰：“诸君听吾计，使勃海引河内之觽临孟津，酸枣诸将守成皋，据敖仓，塞轘辕、太谷，全制其险；使袁将军率南阳之军军丹、析，入武关，以震三辅：皆高垒深壁，勿与战，益为疑兵，示天下形势，以顺诛逆，可立定也。今兵以义动，持疑而不进，失天下之望，窃为诸君耻之！”邈等不能用。
+
+太祖兵少，乃与夏侯惇等诣扬州募兵，刺史陈温、丹杨太守周昕与兵四千余人。还到龙亢，士卒多叛。至铚、建平，复收兵得千余人，进屯河内。
+
+刘岱与桥瑁相恶，岱杀瑁，以王肱领东郡太守。
+
+袁绍与韩馥谋立幽州牧刘虞为帝，太祖拒之。绍又尝得一玉印，于太祖坐中举向其肘，太祖由是笑而恶焉。			
+				太祖武皇帝，沛国谯人也，姓曹，讳操，字孟德，汉相国参之后。桓帝世，曹腾为中常侍大长秋，封费亭侯。养子嵩嗣，官至太尉，莫能审其生出本末。嵩生太祖。
+
+太祖少机警，有权数，而任侠放荡，不治行业，故世人未之奇也；惟梁国桥玄、南阳何颙异焉。玄谓太祖曰：“天下将乱，非命世之才不能济也，能安之者，其在君乎！”年二十，举孝廉为郎，除洛阳北部尉，迁顿丘令，征拜议郎。
+
+光和末，黄巾起。拜骑都尉，讨颍川贼。迁为济南相，国有十余县，长吏多阿附贵戚，赃污狼藉，于是奏免其八；禁断淫祀，奸宄逃窜，郡界肃然。久之，征还为东郡太守；不就，称疾归乡里。
+
+顷之，冀州刺史王芬、南阳许攸、沛国周旌等连结豪杰，谋废灵帝，立合肥侯，以告太祖，太祖拒之。芬等遂败。
+
+金城边章、韩遂杀刺史郡守以叛，觽十余万，天下骚动。征太祖为典军校尉。会灵帝崩，太子即位，太后临朝。大将军何进与袁绍谋诛宦官，太后不听。进乃召董卓，欲以胁太后，卓未至而进见杀。卓到，废帝为弘农王而立献帝，京都大乱。卓表太祖为骁骑校尉，欲与计事。太祖乃变易姓名，间行东归。出关，过中牟，为亭长所疑，执诣县，邑中或窃识之，为请得解。卓遂杀太后及弘农王。太祖至陈留，散家财，合义兵，将以诛卓。冬十二月，始起兵于己吾，是岁中平六年也。
+
+初平元年春正月，后将军袁术、冀州牧韩馥、豫州刺史孔□、兖州刺史刘岱、河内太守王匡、勃海太守袁绍、陈留太守张邈、东郡太守桥瑁、山阳太守袁遗、济北相鲍信同时俱起兵，觽各数万，推绍为盟主。太祖行奋武将军。
+
+二月，卓闻兵起，乃徙天子都长安。卓留屯洛阳，遂焚宫室。是时绍屯河内，邈、岱、瑁、遗屯酸枣，术屯南阳，□屯颍川，馥在邺。卓兵强，绍等莫敢先进。太祖曰：“举义兵以诛暴乱，大觽已合，诸君何疑？向使董卓闻山东兵起，倚王室之重，据二周之险，东向以临天下；虽以无道行之，犹足为患。今焚烧宫室，劫迁天子，海内震动，不知所归，此天亡之时也。一战而天下定矣，不可失也。”遂引兵西，将据成皋。邈遣将韂兹分兵随太祖。到荥阳汴水，遇卓将徐荣，与战不利，士卒死伤甚多。太祖为流矢所中，所乘马被创，从弟洪以马与太祖，得夜遁去。荣见太祖所将兵少，力战尽日，谓酸枣未易攻也，亦引兵还。
+
+太祖到酸枣，诸军兵十余万，日置酒高会，不图进取。太祖责让之，因为谋曰：“诸君听吾计，使勃海引河内之觽临孟津，酸枣诸将守成皋，据敖仓，塞轘辕、太谷，全制其险；使袁将军率南阳之军军丹、析，入武关，以震三辅：皆高垒深壁，勿与战，益为疑兵，示天下形势，以顺诛逆，可立定也。今兵以义动，持疑而不进，失天下之望，窃为诸君耻之！”邈等不能用。
+
+太祖兵少，乃与夏侯惇等诣扬州募兵，刺史陈温、丹杨太守周昕与兵四千余人。还到龙亢，士卒多叛。至铚、建平，复收兵得千余人，进屯河内。
+
+刘岱与桥瑁相恶，岱杀瑁，以王肱领东郡太守。
+
+袁绍与韩馥谋立幽州牧刘虞为帝，太祖拒之。绍又尝得一玉印，于太祖坐中举向其肘，太祖由是笑而恶焉。
+			</div>
+			<div id="box-srcoll">
+				<span>
+					
+				</span>
+			</div>
+		</div>
+		<script>
+		(function(){
+			var Div =document.querySelector(".box");
+			var Divcontent = document.querySelector(".box #content");
+	        var Divsrcoll = document.querySelector("#box-srcoll span");
+	       	var DivsrcollBox = document.getElementById("box-srcoll")
+	        	Divsrcoll.style.height = (Div.clientHeight / Div.scrollHeight)*Div.clientHeight + 'px';
+	        var barMin = 0,
+	        	barMax = Div.clientHeight - Divsrcoll.clientHeight,
+	        	conMin = 0,
+	        	conMax = Div.scrollHeight - Div.clientHeight;
+	        Div.onselectstart = function(){ return false };
+	        addEvent(Divsrcoll , "mousedown" , function(e){
+            	e = e || window.event;
+	        	var dY = e.clientY;
+	        	var dTop = this.offsetTop;
+	        	var This = this;
+	        	addEvent(document , "mousemove" , move);
+	        	addEvent(document , "mouseup" , up)
+	        	function move(e){
+	        		e = e || window.event;
+	        		var mY = e.clientY;
+	        		var top = dTop + (mY-dY);
+	        		top = Math.max(top,barMin);
+	        		top = Math.min(top,barMax);
+	        		This.style.top = top+"px"
+	        		var prop = top / barMax;
+	        		var conTop = - prop * conMax;
+	        		Divcontent.style.top = conTop + "px"
+	        	}
+	        	function up(){
+	        		removeEvent(this , "mousemove" , move);
+	        		removeEvent(this , "mouseup" , up)
+	        	};
+	       });
+	       addEvent(Divsrcoll , "mousedown" ,function(e){
+	       	
+	       })
+	       addEvent(Div , "mousewheel" ,function(e,d){
+//	       		e.cancelBubble = true;
+				var t = d*50;
+				var top = Divcontent.offsetTop - t;
+				top = Math.max( -conMax,top);
+				top = Math.min( 0,top);
+				Divcontent.style.top = top +"px";
+				Divsrcoll.style.top = -(top/conMax)*barMax + "px";
+	       		e.preventDefault();
+	       });
+	       addEvent(DivsrcollBox , "click" , function(e){
+	       		e = e||window.event;
+	       		var nowY = e.clientY,
+	       			top = nowY - docTop(Div) - Divsrcoll.clientHeight/2;
+	        		top = Math.max(top,barMin);
+	        		top = Math.min(top,barMax);
+	        		Divsrcoll.style.top = top+"px"
+	        		var prop = top / barMax;
+	        		var conTop = - prop * conMax;
+	        		Divcontent.style.top = conTop + "px"	       			
+	       			
+	       })
+	       addEvent(Divsrcoll , "click" , function(e){
+	       		e = e||window.event;
+	       		e.cancelBubble = true;
+	       })	       
+        })();
+        
+        
+        
+        function addEvent( obj , eName , eFn ) {
+			if (eName === "mousewheel") {
+				obj.attachEvent?obj.attachEvent("onmousewheel",Fn):obj.addEventListener("mousewheel",Fn,false);
+	            document.addEventListener && obj.addEventListener("DOMMouseScroll" , Fn);
+	            function Fn(e) {
+	                e = e || window.event;
+	                var d = -e.wheelDelta/120 || e.detail/3;
+	                eFn.call(this,e,d);
+				}
+			}else{
+				if ( obj.attachEvent ){
+					obj.attachEvent( "on"+eName , eFn );//兼容IE8及以下
+				}else{
+					obj.addEventListener(eName , eFn , false); //兼容标准浏览器
+				}
+			}     	
+	    }
+        function removeEvent( obj , eName , eFn ) {
+            if ( obj.attachEvent ){
+                obj.detachEvent( "on"+eName , eFn );
+            }else{
+                obj.removeEventListener(eName , eFn , false);
+            }
+        }        
+        function docTop(obj){
+        	var sTop = 0;
+        	while(obj!==document.body){
+        		sTop +=obj.offsetTop;
+        		obj =obj.offsetParent;
+        	}
+        	return sTop - (document.documentElement.scrollTop || document.body.scrollTop)
+        }
+		</script>
+	</body>
+</html>

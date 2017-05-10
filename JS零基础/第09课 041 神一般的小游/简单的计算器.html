@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第09课 041 神一般的小游</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li {
+				list-style: none;
+			}
+			.main {
+				width: 300px;
+				height: 400px;
+				margin: 30px auto;
+				padding: 10px;
+				border: 1px solid gray;
+				border-radius: 4px;
+				
+			}
+			.main .calculator-result {
+				text-align: right;
+				border: 1px solid gainsboro;
+				padding: 5px 10px;
+				line-height: 40px;
+				font-weight: bold;
+				height: 40px;
+			}
+			.calculator-input input{
+			    width: 65px;
+			    height: 45px;
+			    margin-right: 5px;
+			    margin-top: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="calculator-result">
+				0
+			</div>
+			<div class="calculator-input">
+				<input type="button" value="1" />
+				<input type="button" value="2" />
+				<input type="button" value="3" />
+				<input type="button" value="+" />
+				<input type="button" value="4" />
+				<input type="button" value="5" />
+				<input type="button" value="6" />
+				<input type="button" value="-" />
+				<input type="button" value="7" />
+				<input type="button" value="8" />
+				<input type="button" value="9" />
+				<input type="button" value="*" />
+				<input type="button" value="0" />
+				<input type="button" value="." />
+				<input type="button" value="=" />
+				<input type="button" value="/" />
+				<input type="button" value="C" />
+			</div>
+		</div>
+		<script>
+			var c_result = document.querySelectorAll(".calculator-result");
+			var c_input = document.querySelectorAll(".calculator-input input");
+			var results = "";
+			var calresults = "";
+			var re1=/^[\*|\/].+/; //判断字符串的开头是不是符号*或/
+			var re2=/.+[\*|\/]$/; //判断字符串的结尾是不是符号*或/
+			for (var i=0;i<c_input.length;i++) {
+				c_input[i].onclick = function(){
+					switch (this.value){
+						case "=":
+							if (results.match(re1)||results.match(re2)) {
+						        c_result[0].innerText = "输入错误";
+						        results="";
+						        return;
+							}
+						    calresults = eval(results);
+							if(calresults==undefined){
+								calresults = 0
+							}							    
+							c_result[0].innerText = calresults;
+							break;
+						case "C":
+						    results = "";
+							c_result[0].innerText = "0";
+							break;								
+						default:
+							results += this.value;
+							c_result[0].innerText = results;							
+							break;
+					}						
+				}
+			}
+		</script>
+	</body>
+</html>

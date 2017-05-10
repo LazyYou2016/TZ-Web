@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第09课 041 神一般的小游</title>
+		<style>
+			.box {
+				border-bottom: 1px solid red;
+				padding: 10px;
+			}
+			.box input {
+				/*color: #333;
+				font-family: "微软雅黑";
+				font-size: 24px;*/
+				display: none;
+			}
+			.box input[disabled] {
+				background: transparent;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<span>我是要修改的文字</span>
+			<input type="text" value="" placeholder="请输入修改内容"/>
+			<button>修改</button>
+		</div>
+		<div class="box">
+			<span>我是要修改的文字</span>
+			<input type="text" value="" placeholder="请输入修改内容"/>
+			<button>修改</button>
+		</div>
+		<div class="box">
+			<span>我是要修改的文字</span>
+			<input type="text" value="" placeholder="请输入修改内容"/>
+			<button>修改</button>
+		</div>
+		<div class="box">
+			<span>我是要修改的文字</span>
+			<input type="text" value="" placeholder="请输入修改内容"/>
+			<button>修改</button>
+		</div>		
+		<script>
+			var oBtn = document.querySelectorAll(".box button");
+			var oIpt = document.querySelectorAll(".box input");
+			var oText = document.querySelectorAll(".box span");
+			var length = oBtn.length;
+			for (var i=0;i<length;i++) {
+				oBtn[i].goudan = i;
+				oBtn[i].bool = true;
+				oBtn[i].onclick = function (){
+					var index = this.goudan;
+					var bool = this.innerHTML == "修改";
+					bool?oText[index].innerHTML=oIpt[index].value:oText[index].innerHTML=oIpt[index].value;
+					oText[index].style.display = bool?"none":"inline-block";
+					oIpt[index].style.display = bool?"inline-block":"none";
+					this.innerHTML = bool?"确认":"修改";
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第21课 041 神一般的小游</title>
+		<style>
+	        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+	        li{ list-style:none;}
+	        .ball {
+	        	position: absolute;
+	        	top: 0;
+	        	left: 0;
+	        	width: 100px;
+	        	height: 100px;
+	        	background: #DB7093;
+	        	border-radius: 50%;
+	        }
+		</style>
+	</head>
+	<body>
+		<script>
+			run(10);
+			function run(num){
+				for (var i = 0;i<num;i++) {
+					var oDiv = document.createElement("div");
+						oDiv.style.backgroundColor = ballcolor(),
+						oDiv.className = "ball";					
+						oDiv.topVal = 3+i;
+						oDiv.leftVal = 3+i;
+						document.body.appendChild(oDiv);
+				}
+				var Ball = document.querySelectorAll(".ball");
+				var Wbody = document.documentElement.clientWidth - Ball[0].clientWidth,
+					Hbody = document.documentElement.clientHeight - Ball[0].clientWidth;
+					
+				window.onresize = function(){
+					Wbody = document.documentElement.clientWidth - Ball[0].clientWidth,
+					Hbody = document.documentElement.clientHeight - Ball[0].clientWidth;				
+				}						
+				function Ballplay(){
+					for (var i = 0;i<num;i++) {
+						var oBall = Ball[i],
+							Bleft = oBall.offsetLeft,
+							Btop = oBall.offsetTop,
+							top = Btop + oBall.topVal,
+							left = Bleft + oBall.leftVal;
+							if (top >= Hbody || top <= 0) {
+								top = Math.min(top,Hbody);
+								top = Math.max(top,0);
+								oBall.topVal = -oBall.topVal;
+								oBall.style.backgroundColor = ballcolor();
+							}
+							if (left >= Wbody || left <= 0) {
+								left = Math.min(left,Wbody);
+								left = Math.max(left,0);
+								oBall.leftVal = -oBall.leftVal;
+								oBall.style.backgroundColor = ballcolor();
+							}				
+							
+							oBall.style.top = top + "px"
+							oBall.style.left =left + "px";						
+					}
+					requestAnimationFrame(Ballplay);
+				}
+				Ballplay();	
+				function ballcolor(){
+					var r = Math.floor(Math.random()*256),
+						g = Math.floor(Math.random()*256),
+						b = Math.floor(Math.random()*256);
+						return "rgb("+r+","+g+","+b+")"
+				}
+			}
+					
+					
+					
+					
+					
+					
+					
+//			var Ball = document.querySelector(".ball");
+//					var Topval = oDiv[i].topVal,
+//						Leftval = oDiv[i].leftVal,;
+//					var Wbody = document.documentElement.clientWidth - Ball.clientWidth,
+//						Hbody = document.documentElement.clientHeight - Ball.clientWidth;
+//						
+//					window.onresize = function(){
+//						Wbody = document.documentElement.clientWidth - Ball.clientWidth,
+//						Hbody = document.documentElement.clientHeight - Ball.clientWidth;				
+//					}
+//					
+//					function Ballplay(){
+//						var Btop = Ball.offsetTop;
+//						var Bleft = Ball.offsetLeft;
+//						var top = Btop + Topval;
+//						var left = Bleft + Leftval;
+//						if (top > Hbody || top < 0) {
+//							top = Math.min(top,Hbody);
+//							top = Math.max(top,0);
+//							Topval = -Topval;
+//						}
+//						if (left > Wbody || left < 0) {
+//							left = Math.min(left,Wbody);
+//							left = Math.max(left,0);
+//							Leftval = -Leftval;
+//						}				
+//						
+//						
+//							Ball.style.top = top + "px"
+//							Ball.style.left =left + "px";						
+//							console.log(Topval)	
+//						requestAnimationFrame(Ballplay);
+//					}
+//		//			Ballplay();		
+		</script>
+	</body>
+</html>

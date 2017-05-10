@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #banner{
+            position: relative;
+            width: 900px;
+            height: 400px;
+            margin: 50px auto;
+        }
+        #banner .pic{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #banner .pic ul {
+        	position: absolute;
+        	left: 0;
+        }
+        #banner .pic ul li{
+        	float: left;
+    	    width: 900px;
+    	    height: 400px;
+        }
+        #banner .pic ul li img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #banner .tab{
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            width: 280px;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        #banner .tab ul li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #9c00a5;
+            margin: 3px;
+            cursor: pointer;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+        }
+        #banner .tab ul li.active{
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div class="pic">
+            <ul>
+                <li class="on"><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+                <li><img src="img/6.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="tab">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+	    </div>
+	<script src="js/animation.js"></script>
+    <script>
+        (function () {
+            var oBanner = document.getElementById("banner"),
+           		aPicUi = oBanner.querySelectorAll(".pic ul"),
+                aPicLi = oBanner.querySelectorAll(".pic li"),
+                aTabUi = oBanner.querySelectorAll(".tab ul"),
+                aTabLi = oBanner.querySelectorAll(".tab li"),
+                length = aTabLi.length,
+                index = 0,
+                timer = null;
+                var sunWidth =  oBanner.currentStyle?oBanner.currentStyle["width"]:getComputedStyle(oBanner)["width"];
+            aPicUi[0].style.width = parseFloat(sunWidth)*aTabLi.length+"px";
+            for (var i = 0; i < length; i++) {
+                aTabLi[i].index = i;
+                aTabLi[i].innerHTML= aTabLi[i].index+1;
+                aTabLi[i].onclick = function () {
+                    var This = this;
+                    change(function () {
+                        index = This.index;
+                    });
+                };
+            }
+            oBanner.onmouseenter = function () {
+                clearInterval(timer);
+            };
+            oBanner.onmouseleave = auto;                
+            auto();            
+            function auto() {
+                timer = setInterval(function () {
+                    change(function () {
+                        index ++;
+                        index %= length;
+                    });
+                },3000);
+            }            
+            function change( fn ) {
+                aTabLi[index].className = '';
+                fn();
+                var Yleft = parseFloat(-900*aTabLi[index].index);
+//              console.log(aTabLi[index].index)
+//              console.log(Yleft)
+                move(aPicUi[0],{left : Yleft},500);
+                aTabLi[index].className = "active";
+            }
+        })();
+    </script>
+</body>
+</html>

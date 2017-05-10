@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>第09课 041 神一般的小游</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        .box{
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        .box-left {
+    	    float: left;
+        }
+        .box-left li{
+        	position: relative;
+        	width: 90px;
+        	height: 50px;
+        	line-height: 50px;
+        	background: #000;
+        	color: #fff;
+        	text-align: center;
+        	cursor: pointer;
+        }
+        .box-left li:after {
+        	content: "";
+        	position: absolute;
+        	left: 0;
+        	bottom: 0;
+        	width: 100%;
+        	border-bottom: 1px solid #fff;
+        }
+        .box-left li:last-child:after {
+        	border: none;
+        }
+        .box-right {
+        	position: relative;
+        	float: left;
+        	width: 310px;
+        }
+        .box-right .box-right-list{
+        	display: none;
+        }
+        .box-right img {
+        	display: none;
+        	width: 100%;
+        	height: 200px;
+        }
+        .block {
+        	display: block!important;
+        }
+        
+        .img-nav {
+        	position: absolute;
+        	right: 0;
+        	bottom: 0;
+        	width: 100%;
+        	height: 40px;
+        	background: rgba(0, 0, 0, 0.5);
+        }
+        .img-nav ul {
+        	float: right;
+        }
+        .img-nav li {
+        	display: inline-block;
+        	background: #BBB;
+        	text-align: center;
+        	width: 30px;
+        	line-height: 40px;
+        	cursor: pointer;
+        }
+        .img-nav li.active,
+        .box-left li.active {
+        	background: #f88401;
+        }
+    </style>
+</head>
+<body>
+	<div class="box">
+		<div class="box-left">
+			<ul>
+				<li class="active">坦克</li>
+				<li>宇宙</li>
+				<li>美女</li>
+				<li>动物</li>
+			</ul>
+		</div>
+		<div class="box-right">
+			<div class="box-right-list block">
+				<img class="block" src="imgs/01-01.png"/>
+				<img src="imgs/01-02.jpg"/>
+				<img src="imgs/01-03.jpg"/>
+				<img src="imgs/01-04.jpg"/>
+				<div class="img-nav">
+					<ul>
+						<li class="active">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>
+			</div>
+			<div class="box-right-list box-right2">
+				<img class="block" src="imgs/02-01.jpg"/>
+				<img src="imgs/02-02.jpg"/>
+				<img src="imgs/02-03.jpg"/>
+				<div class="img-nav">
+					<ul>
+						<li class="active">1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</div>				
+			</div>
+			<div class="box-right-list box-right3">
+				<img class="block" src="imgs/03-01.jpg"/>
+				<img src="imgs/03-02.jpg"/>
+				<img src="imgs/03-03.jpg"/>
+				<img src="imgs/03-04.jpg"/>	
+				<div class="img-nav">
+					<ul>
+						<li class="active">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>				
+			</div>
+			<div class="box-right-list box-right4">
+				<img class="block" src="imgs/04-01.jpg"/>
+				<img src="imgs/04-02.jpg"/>
+				<img src="imgs/04-03.jpg"/>
+				<div class="img-nav">
+					<ul>
+						<li class="active">1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</div>				
+			</div>			
+		</div>
+	</div>
+	<script>
+		var oNav_left = document.querySelectorAll(".box-left ul li");
+		var oBox = document.querySelectorAll(".box-right-list");
+		for (var i = 0;i<oNav_left.length;i++) {
+			var Index = 0;
+			oNav_left[i].index = i;
+			oNav_left[i].onmouseover = function(){
+				oNav_left[Index].className = "";
+				oBox[Index].className = "box-right-list";
+				this.className = "active";
+				Index = this.index;
+				oBox[Index].className = "box-right-list block";
+				Nav_hover();
+			}
+		}
+		function Nav_hover(){
+			var oNav_right = oBox[Index].getElementsByTagName("li");
+			var oImg = oBox[Index].getElementsByTagName("img");
+			for (var j = 0;j<oNav_right.length;j++) {
+				var Index1 = 0;
+				oNav_right[j].index = j;
+				oNav_right[j].onmouseover = function(){
+					oNav_right[Index1].className = "";
+					this.className = "active";
+					oImg[Index1].className = ""
+					Index1 = this.index;
+					oImg[Index1].className = "block"
+				}
+			}				
+		}
+		Nav_hover();
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
